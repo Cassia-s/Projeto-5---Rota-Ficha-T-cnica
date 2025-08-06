@@ -20,10 +20,10 @@ Os dados de vendas da Superstore, originalmente em um arquivo CSV, e as informa�
   <details>
   <summary><strong style="font-size: 16px;">Ferramentos utilizadas</strong></summary>
     
-•	BigQuery: criação das tabelas, execução das consultas SQL, transformação e modelagem dimensional.
-•	Python (pandas + bigquery): leitura, limpeza e carga dos dados automatizada.
-•	Google Sheets (IMPORTHTML): extração de dados externos via scraping.
-•	Apresentação google: criação da apresentação final com storytelling visual.
+ •	BigQuery: criação das tabelas, execução das consultas SQL, transformação e modelagem dimensional.
+ •	Python (pandas + bigquery): leitura, limpeza e carga dos dados automatizada.
+ •	Google Sheets (IMPORTHTML): extração de dados externos via scraping.
+ •	Apresentação google: criação da apresentação final com storytelling visual.
 
   </details>
   
