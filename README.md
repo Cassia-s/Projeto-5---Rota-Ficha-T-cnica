@@ -44,13 +44,19 @@ Cassia Silva
 A solução implementada foi a criação de um Data Warehouse utilizando a modelagem Star Schema. Esta arquitetura foi escolhida por sua capacidade de otimizar consultas analíticas, facilitar a compreensão dos dados e simplificar a agregação de métricas.
 
 •	Modelo de dados:
+
 o	Tabela de fatos (fact_sales): Tabela central que armazena as métricas quantitativas de cada transação de venda, como sales, profit, quantity e shipping_cost. Possui chaves estrangeiras (FKs) que se conectam às tabelas de dimensão.
 
 o	Tabelas de dimensão (dim_...): Tabelas que fornecem o contexto descritivo para os fatos. Cada dimensão armazena atributos sobre:
+
 - dim_customer (Quem comprou?): customer_id, customer_name, segment.
+
 - dim_product (O que foi vendido?): product_id, product_name, category, sub_category.
+
 - dim_location (Onde aconteceu?): location_id, city, state, country, region.
+
 - dim_order (Quando aconteceu?): order_id, order_date, ship_date, order_priority, ship_mode.
+
 - dim_concorrentes (Dados contextuais): concorrente_id, company, country, industry.
 
   </details>
