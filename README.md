@@ -6,7 +6,6 @@
   <details>
   <summary><strong style="font-size: 16px;">Resumo executivo</strong></summary>
     
-1. Resumo executivo
 Este projeto teve como objetivo principal a transformação de dados brutos e desestruturados, provenientes de múltiplas fontes, em um modelo de dados analítico e robusto. Através do processo de ETL (Extração, Transformação e Carga), foi construído um Data Warehouse no Google BigQuery, utilizando a modelagem dimensional Star Schema. A solução permite que a empresa Superstore realize análises de vendas mais eficientes e estratégicas, cruzando informações de clientes, produtos, localização, pedidos e concorrentes de forma integrada.
 
   </details>
@@ -14,7 +13,6 @@ Este projeto teve como objetivo principal a transformação de dados brutos e de
   <details>
   <summary><strong style="font-size: 16px;">Problema de negócio</strong></summary>
     
-2. Problema de negócio
 Os dados de vendas da Superstore, originalmente em um arquivo CSV, e as informações de concorrentes, obtidas via web scraping, encontravam-se isolados e sem uma estrutura relacional otimizada. A ausência de um sistema tabular unificado e uma arquitetura de dados consistente dificultava a realização de consultas complexas, a medição de KPIs (Key Performance Indicators) e a extração de insights valiosos para a tomada de decisões.
 
   </details>
@@ -22,7 +20,6 @@ Os dados de vendas da Superstore, originalmente em um arquivo CSV, e as informa�
   <details>
   <summary><strong style="font-size: 16px;">Ferramentos utilizadas</strong></summary>
     
-3. Ferramentas utilizadas: 
 •	BigQuery: criação das tabelas, execução das consultas SQL, transformação e modelagem dimensional.
 •	Python (pandas + bigquery): leitura, limpeza e carga dos dados automatizada.
 •	Google Sheets (IMPORTHTML): extração de dados externos via scraping.
@@ -33,7 +30,6 @@ Os dados de vendas da Superstore, originalmente em um arquivo CSV, e as informa�
   <details>
   <summary><strong style="font-size: 16px;">Equipe</strong></summary>
     
-4. Equipe
 Cassia Silva
 
   </details>
@@ -41,7 +37,6 @@ Cassia Silva
   <details>
   <summary><strong style="font-size: 16px;">Solução técnica</strong></summary>
     
-5. Solução técnica
 A solução implementada foi a criação de um Data Warehouse utilizando a modelagem Star Schema. Esta arquitetura foi escolhida por sua capacidade de otimizar consultas analíticas, facilitar a compreensão dos dados e simplificar a agregação de métricas.
 •	Modelo de dados:
 o	Tabela de fatos (fact_sales): Tabela central que armazena as métricas quantitativas de cada transação de venda, como sales, profit, quantity e shipping_cost. Possui chaves estrangeiras (FKs) que se conectam às tabelas de dimensão.
@@ -57,7 +52,6 @@ o	Tabelas de dimensão (dim_...): Tabelas que fornecem o contexto descritivo par
   <details>
   <summary><strong style="font-size: 16px;">Processo de ETL pipeline de dados</strong></summary>
     
-6. Processo de ETL e pipeline de dados
 Um pipeline de ETL automatizado foi desenvolvido para extrair os dados, transformá-los e carregá-los no BigQuery, seguindo uma ordem de dependência lógica.
 •	Tecnologias:
 o	Linguagem de programação: Python
@@ -75,7 +69,6 @@ o	Destino: Google BigQuery.
   <details>
   <summary><strong style="font-size: 16px;">Entregas e resultados</strong></summary>
     
-7. Entregas e resultados
 •	Código: Um script Python (rota_etl_superstore.py ou .ipynb) contendo a lógica completa de ETL.
 •	Estrutura de dados: Um conjunto de tabelas de fatos e dimensões no Google BigQuery.
 •	Documentação:
@@ -88,7 +81,6 @@ o	Fluxograma do pipeline de atualização de dados.
   <details>
   <summary><strong style="font-size: 16px;">Recomendações futuras</strong></summary>
     
-8. Recomendações futuras
 •	Automatizar o pipeline - Agendar o pipeline de ETL para execução automática e contínua.
 •	Implementar (SCD) Rastrear mudanças nos dados (ex: cliente mudando de segmento) para análises históricas precisas.
 •	Ampliar a base com novas fontes (e-commerce, SAC, redes sociais)
@@ -99,7 +91,6 @@ o	Fluxograma do pipeline de atualização de dados.
   <details>
   <summary><strong style="font-size: 16px;">Conclusão</strong></summary>
 
-10. Conclusão
 Este projeto consolidou o uso de boas práticas de engenharia de dados com foco em análise de negócios, e mostrou como transformar um arquivo bruto em uma estrutura analítica escalável. A modelagem com Star Schema, combinada ao processo ETL limpo e bem documentado, permitiu a construção de uma base sólida para decisões baseadas em dados.
 
   </details>
@@ -107,6 +98,5 @@ Este projeto consolidou o uso de boas práticas de engenharia de dados com foco 
   <details>
   <summary><strong style="font-size: 16px;">Links</strong></summary>
     
-11. Links
 •	[Apresentações google](https://docs.google.com/presentation/d/1sGMw_1xxm-tVbcfihM8Qujl1IWJSM1VAc0pAmAUibgs/edit?usp=sharing)
 •	[Apresentação de vídeo (Loom) 
