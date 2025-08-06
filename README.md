@@ -65,16 +65,25 @@ o	Tabelas de dimensão (dim_...): Tabelas que fornecem o contexto descritivo par
   <summary><strong style="font-size: 16px;">Processo de ETL pipeline de dados</strong></summary>
     
 Um pipeline de ETL automatizado foi desenvolvido para extrair os dados, transformá-los e carregá-los no BigQuery, seguindo uma ordem de dependência lógica.
+
 •	Tecnologias:
-o	Linguagem de programação: Python
-o	Bibliotecas: Pandas para manipulação e transformação de dados, pandas-gbq e google-cloud-bigquery para a carga de dados no BigQuery.
-o	Destino: Google BigQuery.
+
+- o	Linguagem de programação: Python
+
+- o	Bibliotecas: Pandas para manipulação e transformação de dados, pandas-gbq e google-cloud-bigquery para a carga de dados no BigQuery.
+
+- o	Destino: Google BigQuery.
+  
 •	Fluxo de trabalho do pipeline:
+
 1.	Extração: Dados brutos são lidos do arquivo CSV da Superstore e de uma fonte externa (web scraping de dados de concorrentes).
+
 2.	Transformação: Os dados são limpos, padronizados e agregados. Chaves primárias (surrogate keys) são geradas para cada tabela de dimensão. A tabela de fatos é construída em seguida, utilizando as chaves estrangeiras para referenciar as dimensões já criadas.
+
 3.	Carga: Os DataFrames processados são carregados na ordem correta para o BigQuery:
-	Primeiro, todas as tabelas de dimensão.
-	Por último, a tabela de fatos, que depende das chaves das dimensões.
+
+- Primeiro, todas as tabelas de dimensão.
+-	Por último, a tabela de fatos, que depende das chaves das dimensões.
 
   </details>
   
