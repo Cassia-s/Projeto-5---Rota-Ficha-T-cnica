@@ -91,11 +91,16 @@ Um pipeline de ETL automatizado foi desenvolvido para extrair os dados, transfor
   <summary><strong style="font-size: 16px;">Entregas e resultados</strong></summary>
     
 •	Código: Um script Python (rota_etl_superstore.py ou .ipynb) contendo a lógica completa de ETL.
+
 •	Estrutura de dados: Um conjunto de tabelas de fatos e dimensões no Google BigQuery.
+
 •	Documentação:
-o	Diagrama de modelagem Star Schema.
-o	Fluxograma do pipeline de atualização de dados.
-•	Análise de Desempenho: A nova estrutura permite consultas complexas com maior eficiência e menor custo computacional, proporcionando uma base sólida para a análise de BI.
+
+- Diagrama de modelagem Star Schema.
+- 
+- Fluxograma do pipeline de atualização de dados.
+- 
+- Análise de Desempenho: A nova estrutura permite consultas complexas com maior eficiência e menor custo computacional, proporcionando uma base sólida para a análise de BI.
 
   </details>
   
@@ -103,8 +108,11 @@ o	Fluxograma do pipeline de atualização de dados.
   <summary><strong style="font-size: 16px;">Recomendações futuras</strong></summary>
     
 •	Automatizar o pipeline - Agendar o pipeline de ETL para execução automática e contínua.
+
 •	Implementar (SCD) Rastrear mudanças nos dados (ex: cliente mudando de segmento) para análises históricas precisas.
+
 •	Ampliar a base com novas fontes (e-commerce, SAC, redes sociais)
+
 •	Criar visões agregadas e dashboards para acompanhamento de KPIs
 
   </details>
@@ -120,4 +128,5 @@ Este projeto consolidou o uso de boas práticas de engenharia de dados com foco 
   <summary><strong style="font-size: 16px;">Links</strong></summary>
     
 •	[Apresentações google](https://docs.google.com/presentation/d/1sGMw_1xxm-tVbcfihM8Qujl1IWJSM1VAc0pAmAUibgs/edit?usp=sharing)
+
 •	[Apresentação de vídeo (Loom) 
