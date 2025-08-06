@@ -1,0 +1,176 @@
+-- 📌 CONSULTAS SQL – PROJETO SUPERSTORE
+-- Autor: Cassia Silva Silvério
+-- Base: estrutura-de-dados-1.superstore.superstore
+-- Descrição: Análises, limpeza, transformação e geração da versão limpa dos dados
+
+--------------------------------------------------------------------------------
+-- 1. Checagem de valores nulos por coluna
+--------------------------------------------------------------------------------
+SELECT
+  COUNTIF(category IS NULL) AS category_nulls,
+  COUNTIF(city IS NULL) AS city_nulls,
+  COUNTIF(country IS NULL) AS country_nulls,
+  COUNTIF(customer_id IS NULL) AS customer_id_nulls,
+  COUNTIF(customer_name IS NULL) AS customer_name_nulls,
+  COUNTIF(discount IS NULL) AS discount_nulls,
+  COUNTIF(market IS NULL) AS market_nulls,
+  COUNTIF(unknown IS NULL) AS unknown_nulls,
+  COUNTIF(order_date IS NULL) AS order_date_nulls,
+  COUNTIF(order_id IS NULL) AS order_id_nulls,
+  COUNTIF(order_priority IS NULL) AS order_priority_nulls,
+  COUNTIF(product_id IS NULL) AS product_id_nulls,
+  COUNTIF(product_name IS NULL) AS product_name_nulls,
+  COUNTIF(profit IS NULL) AS profit_nulls,
+  COUNTIF(quantity IS NULL) AS quantity_nulls,
+  COUNTIF(region IS NULL) AS region_nulls,
+  COUNTIF(row_id IS NULL) AS row_id_nulls,
+  COUNTIF(sales IS NULL) AS sales_nulls,
+  COUNTIF(segment IS NULL) AS segment_nulls,
+  COUNTIF(ship_date IS NULL) AS ship_date_nulls,
+  COUNTIF(ship_mode IS NULL) AS ship_mode_nulls,
+  COUNTIF(shipping_cost IS NULL) AS shipping_cost_nulls,
+  COUNTIF(state IS NULL) AS state_nulls,
+  COUNTIF(sub_category IS NULL) AS sub_category_nulls,
+  COUNTIF(year IS NULL) AS year_nulls,
+  COUNTIF(market2 IS NULL) AS market2_nulls,
+  COUNTIF(weeknum IS NULL) AS weeknum_nulls
+FROM `estrutura-de-dados-1.superstore.superstore`;
+
+--------------------------------------------------------------------------------
+-- 2. Verificação de duplicatas
+--------------------------------------------------------------------------------
+
+-- 2.1. Checar registros duplicados com base em todas as colunas
+SELECT *,
+  COUNT(*) AS qtd
+FROM `estrutura-de-dados-1.superstore.superstore`
+GROUP BY
+  category, city, country, customer_id, customer_name, discount,
+  market, unknown, order_date, order_id, order_priority,
+  product_id, product_name, profit, quantity, region, row_id,
+  sales, segment, ship_date, ship_mode, shipping_cost,
+  state, sub_category, year, market2, weeknum
+HAVING qtd > 1;
+
+-- 2.2. Verificar se há row_ids duplicados
+SELECT row_id, COUNT(*) AS total
+FROM `estrutura-de-dados-1.superstore.superstore`
+GROUP BY row_id
+HAVING total > 1;
+
+-- 2.3. Checar ordem com maior repetição
+SELECT order_id, COUNT(*) AS total
+FROM `estrutura-de-dados-1.superstore.superstore`
+GROUP BY order_id
+ORDER BY total DESC
+LIMIT 10;
+
+-- 2.4. Checar se um customer_id possui mais de um nome
+SELECT customer_id, COUNT(DISTINCT customer_name) AS nomes_diferentes
+FROM `estrutura-de-dados-1.superstore.superstore`
+GROUP BY customer_id
+HAVING nomes_diferentes > 1;
+
+--------------------------------------------------------------------------------
+-- 3. Padronização de dados categóricos (valores únicos)
+--------------------------------------------------------------------------------
+
+SELECT DISTINCT category FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY category;
+SELECT DISTINCT sub_category FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY sub_category;
+SELECT DISTINCT segment FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY segment;
+SELECT DISTINCT region FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY region;
+SELECT DISTINCT country FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY country;
+SELECT DISTINCT state FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY state;
+SELECT DISTINCT city FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY city;
+SELECT DISTINCT market FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY market;
+SELECT DISTINCT market2 FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY market2;
+SELECT DISTINCT order_priority FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY order_priority;
+SELECT DISTINCT ship_mode FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY ship_mode;
+SELECT DISTINCT product_name FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY product_name;
+SELECT DISTINCT customer_name FROM `estrutura-de-dados-1.superstore.superstore` ORDER BY customer_name;
+
+--------------------------------------------------------------------------------
+-- 4. Checar inconsistências em dados numéricos (strings ou texto)
+--------------------------------------------------------------------------------
+
+SELECT * FROM `estrutura-de-dados-1.superstore.superstore`
+WHERE SAFE_CAST(discount AS FLOAT64) IS NULL AND discount IS NOT NULL;
+
+SELECT * FROM `estrutura-de-dados-1.superstore.superstore`
+WHERE SAFE_CAST(profit AS FLOAT64) IS NULL AND profit IS NOT NULL;
+
+SELECT * FROM `estrutura-de-dados-1.superstore.superstore`
+WHERE SAFE_CAST(quantity AS FLOAT64) IS NULL AND quantity IS NOT NULL;
+
+SELECT * FROM `estrutura-de-dados-1.superstore.superstore`
+WHERE SAFE_CAST(sales AS FLOAT64) IS NULL AND sales IS NOT NULL;
+
+SELECT * FROM `estrutura-de-dados-1.superstore.superstore`
+WHERE SAFE_CAST(shipping_cost AS FLOAT64) IS NULL AND shipping_cost IS NOT NULL;
+
+SELECT * FROM `estrutura-de-dados-1.superstore.superstore`
+WHERE SAFE_CAST(year AS FLOAT64) IS NULL AND year IS NOT NULL;
+
+SELECT * FROM `estrutura-de-dados-1.superstore.superstore`
+WHERE SAFE_CAST(weeknum AS FLOAT64) IS NULL AND weeknum IS NOT NULL;
+
+--------------------------------------------------------------------------------
+-- 5. Criação da tabela limpa (superstore_clean)
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE TABLE `estrutura-de-dados-1.superstore.superstore_clean` AS
+SELECT
+  SAFE_CAST(row_id AS INT64) AS row_id,
+  LOWER(category) AS category,
+  LOWER(sub_category) AS sub_category,
+  LOWER(segment) AS segment,
+  LOWER(region) AS region,
+  LOWER(country) AS country,
+  LOWER(state) AS state,
+  LOWER(city) AS city,
+  LOWER(market) AS market,
+  LOWER(market2) AS market2,
+  LOWER(order_priority) AS order_priority,
+  LOWER(ship_mode) AS ship_mode,
+  customer_id,
+  customer_name,
+  order_id,
+  product_id,
+  product_name,
+  DATE(order_date) AS order_date,
+  DATE(ship_date) AS ship_date,
+  SAFE_CAST(year AS INT64) AS year,
+  SAFE_CAST(weeknum AS INT64) AS weeknum,
+  SAFE_CAST(sales AS FLOAT64) AS sales,
+  SAFE_CAST(discount AS FLOAT64) AS discount,
+  SAFE_CAST(profit AS FLOAT64) AS profit,
+  SAFE_CAST(quantity AS INT64) AS quantity,
+  SAFE_CAST(shipping_cost AS FLOAT64) AS shipping_cost
+FROM `estrutura-de-dados-1.superstore.superstore`
+WHERE order_date IS NOT NULL AND ship_date IS NOT NULL;
+
+--------------------------------------------------------------------------------
+-- 6. Análises pós-tratamento
+--------------------------------------------------------------------------------
+
+-- 6.1. Vendas totais por país
+SELECT country, SUM(sales) AS total_sales
+FROM `estrutura-de-dados-1.superstore.superstore_clean`
+GROUP BY country
+ORDER BY total_sales DESC;
+
+-- 6.2. Vendas e lucro por categoria e subcategoria
+SELECT category, sub_category, SUM(sales) AS total_sales, SUM(profit) AS total_profit
+FROM `estrutura-de-dados-1.superstore.superstore_clean`
+GROUP BY category, sub_category
+ORDER BY total_sales DESC;
+
+-- 6.3. Vendas por ano
+SELECT year, SUM(sales) AS total_sales
+FROM `estrutura-de-dados-1.superstore.superstore_clean`
+GROUP BY year
+ORDER BY year;
+
+--------------------------------------------------------------------------------
+-- Fim das consultas SQL
+--------------------------------------------------------------------------------
