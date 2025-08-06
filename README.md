@@ -97,9 +97,9 @@ Um pipeline de ETL automatizado foi desenvolvido para extrair os dados, transfor
 •	Documentação:
 
 - Diagrama de modelagem Star Schema.
-- 
+
 - Fluxograma do pipeline de atualização de dados.
-- 
+
 - Análise de Desempenho: A nova estrutura permite consultas complexas com maior eficiência e menor custo computacional, proporcionando uma base sólida para a análise de BI.
 
   </details>
