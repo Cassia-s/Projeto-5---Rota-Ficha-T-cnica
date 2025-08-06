@@ -49,15 +49,15 @@ o	Tabela de fatos (fact_sales): Tabela central que armazena as métricas quantit
 
 o	Tabelas de dimensão (dim_...): Tabelas que fornecem o contexto descritivo para os fatos. Cada dimensão armazena atributos sobre:
 
-- dim_customer (Quem comprou?): customer_id, customer_name, segment.
+ - dim_customer (Quem comprou?): customer_id, customer_name, segment.
 
-- dim_product (O que foi vendido?): product_id, product_name, category, sub_category.
+ - dim_product (O que foi vendido?): product_id, product_name, category, sub_category.
 
-- dim_location (Onde aconteceu?): location_id, city, state, country, region.
+ - dim_location (Onde aconteceu?): location_id, city, state, country, region.
 
-- dim_order (Quando aconteceu?): order_id, order_date, ship_date, order_priority, ship_mode.
+ - dim_order (Quando aconteceu?): order_id, order_date, ship_date, order_priority, ship_mode.
 
-- dim_concorrentes (Dados contextuais): concorrente_id, company, country, industry.
+ - dim_concorrentes (Dados contextuais): concorrente_id, company, country, industry.
 
   </details>
   
@@ -68,11 +68,11 @@ Um pipeline de ETL automatizado foi desenvolvido para extrair os dados, transfor
 
 •	Tecnologias:
 
-- o	Linguagem de programação: Python
+ - o	Linguagem de programação: Python
 
-- o	Bibliotecas: Pandas para manipulação e transformação de dados, pandas-gbq e google-cloud-bigquery para a carga de dados no BigQuery.
+ - o	Bibliotecas: Pandas para manipulação e transformação de dados, pandas-gbq e google-cloud-bigquery para a carga de dados no BigQuery.
 
-- o	Destino: Google BigQuery.
+ - o	Destino: Google BigQuery.
   
 •	Fluxo de trabalho do pipeline:
 
@@ -82,8 +82,8 @@ Um pipeline de ETL automatizado foi desenvolvido para extrair os dados, transfor
 
 3.	Carga: Os DataFrames processados são carregados na ordem correta para o BigQuery:
 
-- Primeiro, todas as tabelas de dimensão.
--	Por último, a tabela de fatos, que depende das chaves das dimensões.
+ - Primeiro, todas as tabelas de dimensão.
+ - Por último, a tabela de fatos, que depende das chaves das dimensões.
 
   </details>
   
