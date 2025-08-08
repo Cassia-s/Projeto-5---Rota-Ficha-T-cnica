@@ -128,5 +128,3 @@ Este projeto consolidou o uso de boas práticas de engenharia de dados com foco 
   <summary><strong style="font-size: 16px;">Links</strong></summary>
     
 •	[Apresentações google](https://docs.google.com/presentation/d/1sGMw_1xxm-tVbcfihM8Qujl1IWJSM1VAc0pAmAUibgs/edit?usp=sharing)
-
-•	[Apresentação de vídeo (Loom) 
